@@ -1,4 +1,4 @@
-export interface User {
+export interface Member {
     identifier: string,
     pseudo: string,
     password : string;
@@ -6,4 +6,9 @@ export interface User {
     lastName: string;
     email: string;
     birthdate : Date;
+}
+
+export interface User{
+    token: string;
+    member: Member;
 }

@@ -8,7 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { EvenementsPersoComponent } from './evenements/evenements-perso/evenements-perso.component';
+import { EvenementsGlobalComponent } from './evenements/evenements-global/evenements-global.component';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     AccueilComponent,
     NavbarComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    EvenementsPersoComponent,
+    EvenementsGlobalComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     
 
   ],
-  providers: [],
+  providers: [
+    {provide : HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,7 @@ export class InscriptionComponent {
       lastName : [null, [Validators.required, Validators.maxLength(100), Validators.pattern(/^[\D]*$/)], []],
       firstName : [null, [Validators.required, Validators.maxLength(100), Validators.pattern(/^[\D]*$/)]],
       birthdate : [null, [ beforeTodayValidator() ]],
-      password : [null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)]],
+      password : [null, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{5,}$/)]],
     });
   }
   
