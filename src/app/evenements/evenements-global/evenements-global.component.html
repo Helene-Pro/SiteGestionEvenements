@@ -1,1 +1,23 @@
-<p>evenements-global works!</p>
+
+<div class="flex items-center justify-center h-screen">
+  <!-- affichage d'une card brut-->
+  <!-- par défaut, si pas d'image on met une image de trump-->
+  <div class="max-w-sm bg-yellow-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+      <img class="rounded-t-lg" src="assets/images/idiot.jpg" alt="" />
+    </a>
+    <div class="p-5">
+      <!-- List of events -->
+      <h1 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Liste des événements</h1>
+      <ul class="mb-5">
+        <li *ngFor="let event of _tabEvents" class="border-b border-gray-200 dark:border-gray-700 py-3">
+          <p class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Name: {{ event.name }}</p>
+          <p class="mb-2 text-gray-700 dark:text-gray-400">Start Date: {{ event.startDate | date }}</p>
+          <p class="mb-2 text-gray-700 dark:text-gray-400">End Date: {{ event.endDate | date }}</p>
+          <p class="mb-2 text-gray-700 dark:text-gray-400">Description: {{ event.description }}</p>
+          <p class="text-gray-700 dark:text-gray-400">Max Guests: {{ event.maxGuest }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
