@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { beforeTodayValidator } from '../validators/beforeToday.validator';
 import { AuthentificationServiceService } from '../services/authentification-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -12,7 +13,7 @@ export class InscriptionComponent {
 
   registerForm: FormGroup
 
-  constructor(private _fb : FormBuilder, private AuthService : AuthentificationServiceService) {
+  constructor(private _fb : FormBuilder, private AuthService : AuthentificationServiceService, private router: Router) {
     this.registerForm = this._fb.group({
       pseudo : [null, [Validators.required, Validators.maxLength(100)], []],
       email : [null, [Validators.required, Validators.email]],
@@ -22,7 +23,8 @@ export class InscriptionComponent {
       password : [null, [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{5,}$/)]],
     });
   }
-  
+  errorMessage: string = '';
+
   createUser() {
     if (this.registerForm.valid) {
       // Le formulaire est valide
@@ -32,6 +34,8 @@ export class InscriptionComponent {
       this.AuthService.inscription(this.registerForm.value).subscribe(
         (response) => { // Réponse du serveur en cas de succès
           console.log('Inscription réussie', response);
+          this.router.navigate(['/connexion']);
+
         },
         (error) => {
           console.error('Une erreur s\'est produite :', error);
@@ -39,9 +43,8 @@ export class InscriptionComponent {
         }
       );
     } else {
-      // Le formulaire est invalide, marquez tous les champs comme touchés
-      this.registerForm.markAllAsTouched();
-      console.log("FORMULAIRE INVALIDE");
+      this.errorMessage = 'Des champs ne sont pas correctement remplis.';
+      console.log(this.errorMessage); 
     }
   }
 }

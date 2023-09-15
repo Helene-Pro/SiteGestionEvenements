@@ -65,7 +65,13 @@ export class AuthentificationServiceService {
     return this.HttpClient.post<Member>(this._inscriptionApi, newUser);
   }
     
-  
+   //! PARTIE DECONNEXION
+   Deconnexion() : void {
+    //On nettoie le storage pour enlever le token
+    localStorage.clear();
+    //On met à jour l'Observable pour envoyer undefined (plus de user)
+    this._$connectedUser.next(undefined);
+  }
   
 
 }

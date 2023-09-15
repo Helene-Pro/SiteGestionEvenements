@@ -26,8 +26,11 @@ export class NavbarComponent implements OnInit {
      next : (value) => {
        //Quand l'Observable change de valeur
        this.connectedUser = value;
-       console.log("NEXT IN NAVBAR : ", value);
      },
     });
   }
+    //! DECONNEXION
+    disconnect() : void {
+      this.AuthentificationServiceService.Deconnexion();
+    }
 }

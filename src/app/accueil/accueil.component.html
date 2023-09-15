@@ -1,1 +1,31 @@
-<h3> Voici l'accueil</h3>
+<h3>Voici l'accueil</h3>
+
+<div class="flex flex-row justify-center space-x-40">  
+   <div class="w-full lg:w-1/3">
+    <div class="max-w-sm lg:max-w-full lg:flex">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/images/idiot.jpg')" title="Woman holding a mug"></div>
+      <div class="bg-yellow-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-grow p-6">
+        <div class="mb-8">
+          <div class="text-gray-900 font-bold text-xl mb-2">Les évènements</div>
+          <p class="text-gray-700 text-base">Découvrez tous les évènements qui auront lieu prochainement et inscrivez-vous !</p>
+        </div>
+        <button (click)="GoToEventOnClick()" class="bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-bold py-2 px-4 border rounded hover:from-indigo-700 hover:to-green-400">Voir tous les évènements</button>
+      </div>
+    </div>
+  </div>
+
+ 
+  
+  <div class="w-full lg:w-1/3">
+    <div class="max-w-sm lg:max-w-full lg:flex">
+      <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('assets/images/idiot.jpg')" title="Woman holding a mug"></div>
+      <div class="bg-yellow-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-grow p-6">
+        <div class="mb-8">
+          <div class="text-gray-900 font-bold text-xl mb-2">Mes évènements</div>
+          <p class="text-gray-700 text-base">Vous souhaitez créer un évènement, gérer vos évènements et participations ?</p>
+        </div>
+        <button (click)="GoToPrivateEventOnClick()" class="bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-bold py-2 px-4 border rounded hover:from-indigo-700 hover:to-green-400">Gérer mes évènements</button>
+      </div>
+    </div>
+  </div>
+</div>

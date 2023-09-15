@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthentificationServiceService } from '../services/authentification-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -10,7 +11,7 @@ import { AuthentificationServiceService } from '../services/authentification-ser
 export class ConnexionComponent {
   registerForm: FormGroup
 
-  constructor(private _fb: FormBuilder, private AuthService: AuthentificationServiceService) {
+  constructor(private _fb: FormBuilder, private AuthService: AuthentificationServiceService, private router: Router) {
     this.registerForm = this._fb.group({
       identifier: [null, [Validators.required, Validators.maxLength(100)], []],
       password: [null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)]],
@@ -27,10 +28,9 @@ export class ConnexionComponent {
   //*     console.log("FORMULAIRE INVALIDE");
   //*   }
   //* }
-  
+  errorMessage: string = '';
+
   Connexion() {
-    //! Changer identifier et password pour le login dans swager pour voir si ça se 
-    //!co bien 
     if (this.registerForm.valid) {
       const identifierControl = this.registerForm.get('identifier');
       const passwordControl = this.registerForm.get('password');
@@ -44,8 +44,8 @@ export class ConnexionComponent {
           next: (response) => {
             if (response) {
               console.log('Authentifié avec succès');
-            } else {
-              console.error('Échec de l\'authentification');
+              this.router.navigate(['/evenements-perso']);
+
             }
           },
           error: (error) => {
@@ -55,7 +55,9 @@ export class ConnexionComponent {
         );
       }
     } else {
-      console.log('FORMULAIRE INVALIDE');
-    }
+      this.errorMessage = 'Identifiant ou mot de passe incorrect.';
+      console.log(this.errorMessage);     }
   }
+
+
 }  

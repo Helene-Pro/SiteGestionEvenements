@@ -13,6 +13,7 @@ import { EvenementsPersoComponent } from './evenements/evenements-perso/evenemen
 import { EvenementsGlobalComponent } from './evenements/evenements-global/evenements-global.component';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +22,14 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     ConnexionComponent,
     InscriptionComponent,
     EvenementsPersoComponent,
-    EvenementsGlobalComponent
+    EvenementsGlobalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
     
 
   ],

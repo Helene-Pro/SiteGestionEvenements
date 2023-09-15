@@ -1,13 +1,18 @@
 <div class="flex items-center justify-center h-screen">
   <div class="w-full max-w-xs">
-    <form [formGroup]="registerForm" (ngSubmit)="createUser()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <div class="mb-4">
+    <form [formGroup]="registerForm" (ngSubmit)="createUser()" 
+    class="bg-yellow-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700-md  px-8 pt-6 pb-8 mb-4">
+
+    <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="pseudo">
           Identifiant
         </label>
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="pseudo" type="text" formControlName="pseudo">
+        <span class="text-sm text-red-600"
+          *ngIf="registerForm.get('pseudo')?.touched && registerForm.get('pseudo')?.errors?.['required']">Champs
+          requis</span>
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
@@ -16,6 +21,12 @@
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="password" type="password" formControlName="password">
+          <span class="text-sm text-red-600"
+          *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']">Champs
+          requis</span>
+      <span class="text-sm text-red-600" *ngIf="registerForm.get('password')?.errors?. ['pattern']">Votre mot
+          de passe doit contenir au moins 5 caractères dont une minuscule, une majuscule, un caractère spécial et un chiffre</span>
+
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
@@ -24,15 +35,26 @@
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="email" type="text" formControlName="email">
+        <span class="text-sm text-red-600"
+          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">Champs
+          requis</span>
+          <span class="text-sm text-red-600" *ngIf="registerForm.get('email')?.errors?. ['pattern']">Votre mail n'existe pas</span>
+  
+
       </div>
-      <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">
           Nom
         </label>
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="lastName" type="text" formControlName="lastName">
-      </div>
+          <span class="text-sm text-red-600"
+          *ngIf="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.errors?.['required']">Champs
+          requis</span>
+          <span class="text-sm text-red-600" *ngIf="registerForm.get('lastName')?.errors?. ['pattern']">Votre nom ne peut contenir de chiffre </span>
+  
+        
+      
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">
           Prénom
@@ -40,6 +62,11 @@
         <input
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="firstName" type="text" formControlName="firstName">
+          <span class="text-sm text-red-600"
+          *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.errors?.['required']">Champs
+          requis</span>
+          <span class="text-sm text-red-600" *ngIf="registerForm.get('firstName')?.errors?. ['pattern']">Votre prenom ne peut contenir de chiffre </span>
+
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="birthdate">Votre date de naissance :</label>
@@ -49,7 +76,7 @@
       </div>
       <div class="flex items-center justify-between">
         <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          class="bg-gradient-to-r from-indigo-600 to-pink-500 text-white font-bold py-2 px-4 border rounded hover:from-indigo-700 hover:to-pink-400"
           type="submit">
           S'inscrire
         </button>
